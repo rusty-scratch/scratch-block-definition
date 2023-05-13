@@ -1,0 +1,274 @@
+- identifier: add
+  opcode: operator_add
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "+"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: subtract
+  opcode: operator_subtract
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "-"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: multiply
+  opcode: operator_multiply
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "*"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: divive
+  opcode: operator_divide
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "/"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: random
+  opcode: operator_random
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text pick random
+  - !Parameter
+    identifier: from
+    key: FROM
+    parameter_type: Number
+  - !Text to
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: Number
+
+- identifier: greater_than
+  opcode: operator_gt
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text ">"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: less_than
+  opcode: operator_lt
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "<"
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: equals
+  opcode: operator_equals
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: lhs
+    key: NUM1
+    parameter_type: Number
+  - !Text "="
+  - !Parameter
+    identifier: rhs
+    key: NUM2
+    parameter_type: Number
+
+- identifier: and
+  opcode: operator_and
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Parameter
+    identifier: a
+    key: OPERAND1
+    parameter_type: Boolean
+  - !Text and
+  - !Parameter
+    identifier: b
+    key: OPERAND2
+    parameter_type: Boolean
+
+- identifier: or
+  opcode: operator_or
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Parameter
+    identifier: a
+    key: OPERAND1
+    parameter_type: Boolean
+  - !Text or
+  - !Parameter
+    identifier: b
+    key: OPERAND2
+    parameter_type: Boolean
+
+- identifier: not
+  opcode: operator_not
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text not
+  - !Parameter
+    identifier: a
+    key: OPERAND
+    parameter_type: Boolean
+
+- identifier: join
+  opcode: operator_join
+  block_type: !Reporter
+    return_type: String
+  parameters:
+  - !Text join
+  - !Parameter
+    identifier: lhs
+    key: STRING1
+    parameter_type: String
+  - !Parameter
+    identifier: rhs
+    key: STRING2
+    parameter_type: String
+
+- identifier: letter_of
+  opcode: operator_letter_of
+  block_type: !Reporter
+    return_type: String
+  parameters:
+  - !Text letter
+  - !Parameter
+    identifier: index
+    key: LETTER
+    parameter_type: PositiveInteger
+  - !Text of
+  - !Parameter
+    identifier: string
+    key: STRING
+    parameter_type: String
+
+- identifier: length_of
+  opcode: operator_length
+  block_type: !Reporter
+    return_type: PositiveInteger
+  parameters:
+  - !Text length of
+  - !Parameter
+    identifier: string
+    key: STRING
+    parameter_type: String
+
+- identifier: contains
+  opcode: operator_contains
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Parameter
+    identifier: string
+    key: STRING1
+    parameter_type: String
+  - !Text contains
+  - !Parameter
+    identifier: contains
+    key: STRING2
+    parameter_type: String
+
+- identifier: modulo
+  opcode: operator_mod
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: dividend
+    key: NUM1
+    parameter_type: Number
+  - !Text mod
+  - !Parameter
+    identifier: divisor
+    key: NUM2
+    parameter_type: Number
+
+- identifier: modulo
+  opcode: operator_mod
+  block_type: !Reporter
+    return_type: Integer
+  parameters:
+  - !Text round
+  - !Parameter
+    identifier: number
+    key: NUM
+    parameter_type: Number
+
+- identifier: math_operation
+  opcode: operator_mathop
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Parameter
+    identifier: operator
+    key: OPERATOR
+    parameter_type: !Field
+      possible_values:
+      - "abs"
+      - "floor"
+      - "ceiling"
+      - "sqrt"
+      - "sin"
+      - "cos"
+      - "tan"
+      - "asin"
+      - "acos"
+      - "atan"
+      - "ln"
+      - "log"
+      - "e ^"
+      - "10 ^"
+  - !Text of
+  - !Parameter
+    identifier: number
+    key: NUM
+    parameter_type: Number

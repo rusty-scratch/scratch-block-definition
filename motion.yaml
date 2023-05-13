@@ -1,0 +1,241 @@
+- identifier: move_steps
+  opcode: motion_movesteps
+  block_type: Stack
+  parameters:
+  - !Text move
+  - !Parameter
+    identifier: steps
+    key: STEPS
+    parameter_type: Number
+  - !Text steps
+
+# required more checking
+- identifier: turn_clockwise
+  opcode: motion_turnright
+  block_type: Stack
+  parameters:
+  - !Text turn clockwise
+  - !Parameter
+    identifier: degrees
+    key: DEGREES
+    parameter_type: Number
+  - !Text degrees
+
+# required more checking
+- identifier: turn_counter_clockwise
+  opcode: motion_turnleft
+  block_type: Stack
+  parameters:
+  - !Text turn counter-clockwise
+  - !Parameter
+    identifier: degrees
+    key: DEGREES
+    parameter_type: Number
+  - !Text degrees
+
+- identifier: go_to_menu
+  opcode: motion_goto_menu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: !Field
+      possible_values:
+      - _mouse_
+      - _random_
+      possible_categories:
+      - sprite_name
+
+- identifier: go_to
+  opcode: motion_goto
+  block_type: Stack
+  parameters:
+  - !Text go to
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: !UnrestrictedField
+      menu_block: go_to_menu
+
+- identifier: go_to_xy
+  opcode: motion_gotoxy
+  block_type: Stack
+  parameters:
+  - !Text "go to x:"
+  - !Parameter
+    identifier: x
+    key: X
+    parameter_type: Number
+  - !Text "y:"
+  - !Parameter
+    identifier: y
+    key: Y
+    parameter_type: Number
+
+- identifier: glide_to_menu
+  opcode: motion_glideto_menu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: !Field
+      possible_values:
+      - _mouse_
+      - _random_
+      possible_categories:
+      - sprite_name
+
+- identifier: glide_to
+  opcode: motion_glideto
+  block_type: Stack
+  parameters:
+  - !Text glide
+  - !Parameter
+    identifier: seconds
+    key: SECS
+    parameter_type: Number
+  - !Text secs to
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: !UnrestrictedField
+      menu_block: glide_to_menu
+
+- identifier: glide_to_xy
+  opcode: motion_glidesecstoxy
+  block_type: Stack
+  parameters:
+  - !Text "glide"
+  - !Parameter
+    identifier: seconds
+    key: SECS
+    parameter_type: Number
+  - !Text "secs to x:"
+  - !Parameter
+    identifier: x
+    key: X
+    parameter_type: Number
+  - !Text "secs to y:"
+  - !Parameter
+    identifier: y
+    key: Y
+    parameter_type: Number
+
+# required more checking
+- identifier: point_in_direction
+  opcode: motion_pointindirection
+  block_type: Stack
+  parameters:
+  - !Text point in direction
+  - !Parameter
+    identifier: direction
+    key: DIRECTION
+    parameter_type: Number
+
+- identifier: point_towards_menu
+  opcode: motion_pointtowards_menu
+  block_type: Stack
+  parameters:
+  - !Parameter
+    identifier: towards
+    key: TOWARDS
+    parameter_type: !Field
+      possible_values:
+      - _mouse_
+      possible_categories:
+      - sprite_name
+
+- identifier: point_towards
+  opcode: motion_pointtowards
+  block_type: Stack
+  parameters:
+  - !Text point towards
+  - !Parameter
+    identifier: towards
+    key: TOWARDS
+    parameter_type: !UnrestrictedField
+      menu_block: point_towards_menu
+
+- identifier: change_x_by
+  opcode: motion_changexby
+  block_type: Stack
+  parameters:
+  - !Text change x by
+  - !Parameter
+    identifier: by
+    key: DX
+    parameter_type: Number
+
+- identifier: set_x_to
+  opcode: motion_setx
+  block_type: Stack
+  parameters:
+  - !Text set x to
+  - !Parameter
+    identifier: to
+    key: X
+    parameter_type: Number
+
+- identifier: change_y_by
+  opcode: motion_changeyby
+  block_type: Stack
+  parameters:
+  - !Text change j by
+  - !Parameter
+    identifier: by
+    key: DY
+    parameter_type: Number
+
+- identifier: set_y_to
+  opcode: motion_sety
+  block_type: Stack
+  parameters:
+  - !Text set y to
+  - !Parameter
+    identifier: to
+    key: Y
+    parameter_type: Number
+
+- identifier: if_on_edge_bounce
+  opcode: motion_ifonedgebounce
+  block_type: Stack
+  parameters:
+  - !Text if on edge, bounce
+
+- identifier: set_rotation_style_to
+  opcode: motion_setrotationstyle
+  block_type: Stack
+  parameters:
+  - !Text set rotation style
+  - !Parameter
+    identifier: style
+    key: STYLE
+    parameter_type: !Field
+      possible_values:
+      - left-right
+      - don't rotate
+      - all around
+
+- identifier: x_position
+  opcode: motion_xposition
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text x position
+
+- identifier: y_position
+  opcode: motion_yposition
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text y position
+
+# required more checking
+- identifier: direction
+  opcode: motion_direction
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text direction

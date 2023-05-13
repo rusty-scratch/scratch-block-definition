@@ -1,0 +1,140 @@
+- identifier: when_flag_clicked
+  opcode: event_whenflagclicked
+  block_type: Hat
+  parameters:
+  - !Text when green flag clicked
+
+- identifier: when_key_pressed
+  opcode: event_whenkeypressed
+  block_type: Hat
+  parameters:
+  - !Text when
+  - !Parameter
+    identifier: key_option
+    key: KEY_OPTION
+    parameter_type: !Field
+      possible_values:
+      - any
+      - space
+      - left arrow
+      - right arrow
+      - up arrow
+      - down arrow
+      - "0"
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+      - "8"
+      - "9"
+      - a
+      - b
+      - c
+      - d
+      - e
+      - f
+      - g
+      - h
+      - i
+      - j
+      - k
+      - l
+      - m
+      - n
+      - o
+      - p
+      - q
+      - r
+      - s
+      - t
+      - u
+      - v
+      - w
+      - x
+      - y
+      - z
+  - !Text key pressed
+
+- identifier: when_this_sprite_clicked
+  opcode: event_whenthisspriteclicked
+  block_type: Hat
+  parameters:
+  - !Text when this sprite clicked
+- identifier: when_backdrop_switches_to
+  opcode: event_whenbackdropswitchesto
+  block_type: Hat
+  parameters:
+  - !Text when backdrop switches to
+  - !Parameter
+    identifier: backdrop
+    key: BACKDROP
+    parameter_type: !Field
+      possible_categories:
+      - backdrop_name
+
+- identifier: when_greater_than
+  opcode: event_whengreaterthan
+  block_type: Hat
+  parameters:
+  - !Text when
+  - !Parameter
+    identifier: variable
+    key: WHENGREATERTHANMENU
+    parameter_type: !Field
+      possible_values:
+      - LOUDNESS
+      - TIMER
+  - !Text ">"
+  - !Parameter
+    identifier: value
+    key: VALUE
+    parameter_type: Number
+
+- identifier: when_broadcast_received
+  opcode: event_whenbroadcastreceived
+  block_type: Hat
+  parameters:
+  - !Text when I receieve
+  - !Parameter
+    identifier: broadcast_option
+    key: BROADCAST_OPTION
+    parameter_type: !Field
+      possible_categories:
+      - broadcast_name
+
+- identifier: broadcast_menu
+  opcode: event_broadcast_menu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: broadcast
+    key: BROADCAST_INPUT
+    parameter_type: !Field
+      possible_categories:
+        - broadcast_name
+
+- identifier: broadcast
+  opcode: event_broadcast
+  block_type: Stack
+  parameters:
+  - !Text broadcast
+  - !Parameter
+    identifier: broadcast
+    key: BROADCAST_INPUT
+    parameter_type: !UnrestrictedField
+      menu_block: broadcast_menu
+
+- identifier: broadcast_and_wait
+  opcode: event_broadcastandwait
+  block_type: Stack
+  parameters:
+  - !Text broadcast
+  - !Parameter
+    identifier: broadcast
+    key: BROADCAST_INPUT
+    parameter_type: !UnrestrictedField
+      menu_block: broadcast_menu
+  - !Text and wait

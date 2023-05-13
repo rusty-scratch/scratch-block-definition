@@ -1,0 +1,142 @@
+- identifier: wait
+  opcode: control_wait
+  block_type: Stack
+  parameters:
+  - !Text wait
+  - !Parameter
+    identifier: duration
+    key: DURATION
+    parameter_type: Number
+
+- identifier: repeat
+  opcode: control_repeat
+  block_type: Stack
+  parameters:
+  - !Text repeat
+  - !Parameter
+    identifier: times
+    key: TIMES
+    parameter_type: PositiveInteger
+  - !Parameter
+    identifier: to_repeat
+    key: SUBSTACK
+    parameter_type: Block
+
+- identifier: forever
+  opcode: control_repeat
+  block_type: Stack
+  parameters:
+  - !Text forever
+  - !Parameter
+    identifier: to_repeat
+    key: SUBSTACK
+    parameter_type: Block
+
+- identifier: if
+  opcode: control_repeat
+  block_type: Stack
+  parameters:
+  - !Text if
+  - !Parameter
+    identifier: condition
+    key: CONDITION
+    parameter_type: Boolean
+  - !Text then
+  - !Parameter
+    identifier: to_repeat
+    key: SUBSTACK
+    parameter_type: Block
+
+- identifier: if_else
+  opcode: control_if_else
+  block_type: Stack
+  parameters:
+  - !Text if
+  - !Parameter
+    identifier: condition
+    key: CONDITION
+    parameter_type: Boolean
+  - !Text then
+  - !Parameter
+    identifier: if_true
+    key: SUBSTACK
+    parameter_type: Block
+  - !Text else
+  - !Parameter
+    identifier: to_repeat
+    key: SUBSTACK2
+    parameter_type: Block
+
+- identifier: wait_until
+  opcode: control_wait_until
+  block_type: Stack
+  parameters:
+  - !Text wait until
+  - !Parameter
+    identifier: condition
+    key: CONDITION
+    parameter_type: Boolean
+
+- identifier: repeat_until
+  opcode: control_repeat_until
+  block_type: Stack
+  parameters:
+  - !Text repeat until
+  - !Parameter
+    identifier: condition
+    key: CONDITION
+    parameter_type: Boolean
+  - !Parameter
+    identifier: to_repeat
+    key: SUBSTACK
+    parameter_type: Block
+
+- identifier: stop
+  opcode: control_stop
+  block_type: Stack
+  implementor_note: "Required manual implemention for `has_next` control_stop mutation."
+  manual: true
+  parameters:
+  - !Text stop
+  - !Parameter
+    identifier: stop_option
+    key: STOP_OPTION
+    parameter_type: !Field
+      possible_values:
+      - this script
+      - other scripts
+      - all
+
+- identifier: when_i_start_as_a_clone
+  opcode: control_start_as_clone
+  block_type: Hat
+  parameters:
+  - !Text when I start as a clone
+
+- identifier: create_clone_of
+  opcode: control_create_clone_of
+  block_type: Stack
+  parameters:
+  - !Text create clone of
+  - !Parameter
+    identifier: sprite
+    key: CLONE_OPTION
+    parameter_type: !UnrestrictedField
+      menu_block: create_clone_of_menu
+
+- identifier: create_clone_of_menu
+  opcode: control_create_clone_of_menu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: sprite
+    key: CLONE_OPTION
+    parameter_type: !Field
+      possible_categories:
+      - sprite_name
+
+- identifier: delete_this_clone
+  opcode: control_delete_this_clone
+  block_type: Cap
+  parameters:
+  - !Text delete this clone

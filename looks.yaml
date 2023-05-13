@@ -1,0 +1,260 @@
+- identifier: say
+  opcode: looks_say
+  block_type: Stack
+  parameters:
+  - !Text say
+  - !Parameter
+    identifier: message
+    key: MESSAGE
+    parameter_type: String
+
+- identifier: say_for_secs
+  opcode: looks_sayforsecs
+  block_type: Stack
+  parameters:
+  - !Text say
+  - !Parameter
+    identifier: message
+    key: MESSAGE
+    parameter_type: String
+  - !Text for
+  - !Parameter
+    identifier: seconds
+    key: SECS
+    parameter_type: Number
+  - !Text seconds
+
+- identifier: think
+  opcode: looks_think
+  block_type: Stack
+  parameters:
+  - !Text think
+  - !Parameter
+    identifier: message
+    key: MESSAGE
+    parameter_type: String
+
+- identifier: think_for_secs
+  opcode: looks_thinkforsecs
+  block_type: Stack
+  parameters:
+  - !Text think
+  - !Parameter
+    identifier: message
+    key: MESSAGE
+    parameter_type: String
+  - !Text for
+  - !Parameter
+    identifier: seconds
+    key: SECS
+    parameter_type: Number
+  - !Text seconds
+
+- identifier: costume_menu
+  opcode: looks_costume
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: costume
+    key: COSTUME
+    parameter_type: !Field
+      possible_categories:
+        - costume_name
+
+- identifier: switch_costume_to
+  opcode: looks_switchcostumeto
+  block_type: Stack
+  parameters:
+  - !Text switch costume to
+  - !Parameter
+    identifier: costume
+    key: COSTUME
+    parameter_type: !UnrestrictedField
+      menu_block: costume_menu
+
+- identifier: next_costume
+  opcode: looks_nextcostume
+  block_type: Stack
+  parameters:
+  - !Text next costume
+
+- identifier: backdrop_menu
+  opcode: looks_backdrops
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: backdrop
+    key: BACKDROP
+    parameter_type: !Field
+      possible_categories:
+        - backdrop_name
+
+- identifier: switch_backdrop_to
+  opcode: looks_switchbackdropto
+  block_type: Stack
+  parameters:
+  - !Text switch backdrop to
+  - !Parameter
+    identifier: backdrop
+    key: BACKDROP
+    parameter_type: !UnrestrictedField
+      menu_block: backdrop_menu
+
+# unfinished
+- identifier: switch_backdrop_to_and_wait
+  opcode: switch_backdrop_toandwait
+  block_type: Stack
+  parameters:
+  - !Text switch backdrop to
+
+- identifier: next_backdrop
+  opcode: looks_nextbackdrop
+  block_type: Stack
+  parameters:
+  - !Text next backdrop
+
+- identifier: change_size_by
+  opcode: looks_changesizeby
+  block_type: Stack
+  parameters:
+  - !Text change size by
+  - !Parameter
+    identifier: by
+    key: CHANGE
+    parameter_type: Number
+
+- identifier: set_size_to
+  opcode: looks_setsizeto
+  block_type: Stack
+  parameters:
+  - !Text set size to
+  - !Parameter
+    identifier: to
+    key: SIZE
+    parameter_type: Number
+  - !Text "%"
+
+- identifier: change_graphic_effect_by
+  opcode: looks_changeeffectby
+  block_type: Stack
+  parameters:
+  - !Text change
+  - !Parameter
+    identifier: effect
+    key: EFFECT
+    parameter_type: !Field
+      possible_values:
+      - COLOR
+      - FISHEYE
+      - WHIRL
+      - PIXELATE
+      - MOSAIC
+      - BRIGHTNESS
+      - GHOST
+  - !Text effect by
+  - !Parameter
+    identifier: by
+    key: CHANGE
+    parameter_type: Number
+
+- identifier: set_graphic_effect_to
+  opcode: looks_seteffectto
+  block_type: Stack
+  parameters:
+  - !Text set
+  - !Parameter
+    identifier: effect
+    key: EFFECT
+    parameter_type: !Field
+      possible_values:
+      - COLOR
+      - FISHEYE
+      - WHIRL
+      - PIXELATE
+      - MOSAIC
+      - BRIGHTNESS
+      - GHOST
+  - !Text effect to
+  - !Parameter
+    identifier: to
+    key: TO
+    parameter_type: Number
+
+- identifier: show
+  opcode: looks_show
+  block_type: Stack
+  parameters:
+  - !Text show
+
+- identifier: hide
+  opcode: looks_hide
+  block_type: Stack
+  parameters:
+  - !Text hide
+
+- identifier: go_to_layer
+  opcode: looks_gotofrontback
+  block_type: Stack
+  parameters:
+  - !Text go to
+  - !Parameter
+    identifier: layer
+    key: FRONT_BACK
+    parameter_type: !Field
+      possible_values:
+      - front
+      - back
+  - !Text layer
+
+- identifier: change_layer
+  opcode: looks_goforwardbackwardlayers
+  block_type: Stack
+  parameters:
+  - !Text go
+  - !Parameter
+    identifier: layer
+    key: FORWARD_BACKWORD
+    parameter_type: !Field
+      possible_values:
+      - forward
+      - backward
+  - !Parameter
+    identifier: by
+    key: NUM
+    parameter_type: Integer
+  - !Text layers
+
+- identifier: costume
+  opcode: looks_costumenumbername
+  block_type: !Reporter:
+    return_type: Any
+  parameters:
+  - !Text costume
+  - !Parameter
+    identifier: identifier_as
+    key: NUMBER_NAME
+    parameter_type: !Field
+      possible_values:
+      - number
+      - name
+
+- identifier: backdrop
+  opcode: looks_backdropnumbername
+  block_type: !Reporter
+    return_type: Any
+  parameters:
+  - !Text backdrop
+  - !Parameter
+    identifier: identifier_as
+    key: NUMBER_NAME
+    parameter_type: !Field
+      possible_values:
+      - number
+      - name
+
+- identifier: size
+  opcode: looks_size
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text size
