@@ -232,8 +232,8 @@
     key: NUM2
     parameter_type: Number
 
-- identifier: modulo
-  opcode: operator_mod
+- identifier: round
+  opcode: operator_round
   block_type: !Reporter
     return_type: Integer
   parameters:
