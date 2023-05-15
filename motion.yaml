@@ -136,7 +136,7 @@
 
 - identifier: point_towards_menu
   opcode: motion_pointtowards_menu
-  block_type: Stack
+  block_type: Menu
   parameters:
   - !Parameter
     identifier: towards
