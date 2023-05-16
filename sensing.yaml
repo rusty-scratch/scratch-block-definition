@@ -252,7 +252,7 @@
         - size
         - volume
       
-        # availiable variable from `_stage`
+        # availiable variable from `_stage_`
         - "backdrop #"
         - backdrop name
         - volume
