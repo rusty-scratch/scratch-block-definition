@@ -1,0 +1,297 @@
+- identifier: touching_menu
+  opcode: sensing_touchingobjectmenu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: object
+    key: TOUCHINGOBJECTMENU
+    parameter_type: !Field
+      possible_values:
+      - _mouse_
+      - _edge_
+      possible_categories:
+      - sprite_name
+
+- identifier: touching
+  opcode: sensing_touchingobject
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text touching
+  - !Parameter
+    identifier: object
+    key: TOUCHINGOBJECTMENU
+    parameter_type: !UnrestrictedField
+      menu_block: touching_menu
+  - !Text "?"
+
+- identifier: touching_color
+  opcode: sensing_touchingcolor
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text touching color
+  - !Parameter
+    identifier: color
+    key: COLOR
+    parameter_type: Color
+  - !Text "?"
+
+- identifier: color_touching_color
+  opcode: sensing_coloristouchingcolor
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text color
+  - !Parameter
+    identifier: color_a
+    key: COLOR
+    parameter_type: Color
+  - !Text is touching
+  - !Parameter
+    identifier: color_b
+    key: COLOR2
+    parameter_type: Color
+  - !Text "?"
+
+- identifier: distance_to_menu
+  opcode: sensing_distancetomenu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: object
+    key: DISTANCETOMENU
+    parameter_type: !Field
+      possible_values:
+      - _mouse_
+      possible_categories:
+      - sprite_name
+
+- identifier: distance_to
+  opcode: sensing_distanceto
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text distance to
+  - !Parameter
+    identifier: object
+    key: DISTANCETOMENU
+    parameter_type: !UnrestrictedField
+      menu_block: distance_to_menu
+
+- identifier: ask_and_wait
+  opcode: sensing_askandwait
+  block_type: Stack
+  parameters:
+  - !Text ask
+  - !Parameter
+    identifier: question
+    key: QUESTION
+    parameter_type: String
+  - !Text and wait
+
+- identifier: answer
+  opcode: sensing_answer
+  block_type: !Reporter
+    return_type: String
+  parameters:
+  - !Text answer
+
+- identifier: key_menu
+  opcode: sensing_keymenu
+  block_type: Menu
+  parameters:
+  - !Text key
+  - !Parameter
+    identifier: key
+    key: KEY_OPTION
+    parameter_type: !Field
+      possible_values:
+      - any
+      - space
+      - left arrow
+      - right arrow
+      - up arrow
+      - down arrow
+      - "0"
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+      - "8"
+      - "9"
+      - a
+      - b
+      - c
+      - d
+      - e
+      - f
+      - g
+      - h
+      - i
+      - j
+      - k
+      - l
+      - m
+      - n
+      - o
+      - p
+      - q
+      - r
+      - s
+      - t
+      - u
+      - v
+      - w
+      - x
+      - y
+      - z
+
+- identifier: key_pressed
+  opcode: sensing_keypressed
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text key
+  - !Parameter
+    identifier: key
+    key: KEY_OPTION
+    parameter_type: !UnrestrictedField
+      menu_block: key_menu
+  - !Text pressed?
+
+- identifier: mouse_down
+  opcode: sensing_mousedown
+  block_type: !Reporter
+    return_type: Boolean
+  parameters:
+  - !Text mouse down?
+
+- identifier: mouse_x
+  opcode: sensing_mousex
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text mouse x
+
+- identifier: mouse_y
+  opcode: sensing_mousey
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text mouse y
+
+- identifier: set_drag_mode_to
+  opcode: sensing_setdragmode
+  block_type: Stack
+  parameters:
+  - !Text set drag mode
+  - !Parameter
+    identifier: mode
+    key: DRAG_MODE
+    parameter_type: !Field
+      possible_values:
+        - not draggable
+        - draggable
+
+- identifier: loudness
+  opcode: sensing_loudness
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text loudness
+
+- identifier: timer
+  opcode: sensing_timer
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text timer
+
+- identifier: timer
+  opcode: sensing_resettimer
+  block_type: Stack
+  parameters:
+  - !Text reset timer
+
+- identifier: property_of_object_menu
+  opcode: sensing_of_object_menu
+  block_type: Menu
+  parameters:
+  - !Parameter
+    identifier: object
+    key: OBJECT
+    parameter_type: !Field
+      possible_values:
+      - _stage_
+      possible_categories:
+      - sprite_name
+
+- identifier: property_of
+  opcode: sensing_of
+  block_type: !Reporter
+    return_type: Any
+  implementor_note: Some value in `possible_values` is only availiable when some object is chosen.
+    Read original file for more info.
+    This doesn't require manual implementation because it doesn't affect the result much.
+  parameters:
+  - !Parameter
+    identifier: property
+    key: PROPERTY
+    parameter_type: !Field
+      possible_values:
+        # availiable variable from sprites
+        - x position
+        - y position
+        - direction
+        - "costume #"
+        - costume name
+        - size
+        - volume
+      
+        # availiable variable from `_stage`
+        - "backdrop #"
+        - backdrop name
+        - volume
+  - !Text of
+  - !Parameter
+    identifier: object
+    key: OBJECT
+    parameter_type: !UnrestrictedField
+      menu_block: property_of_object_menu
+
+- identifier: current_datetime
+  opcode: sensing_current
+  block_type: !Reporter
+    return_type: PositiveInteger
+  parameters:
+  - !Text current
+  - !Parameter
+    identifier: unit
+    key: CURRENTMENU
+    parameter_type: !Field
+      possible_values:
+      - SECOND
+      - MINUTE
+      - HOUR
+      - DAYOFWEEK
+      - DATE
+      - MONTH
+      - YEAR
+
+- identifier: days_since_2000
+  opcode: sensing_dayssince2000
+  block_type: !Reporter
+    return_type: Number
+  parameters:
+  - !Text days since 2000
+
+- identifier: username
+  opcode: sensing_username
+  block_type: !Reporter
+    return_type: String
+  parameters:
+  - !Text username
